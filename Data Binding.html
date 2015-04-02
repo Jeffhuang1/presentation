@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js - The HTML Presentation Framework</title>
+		<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/serif.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	<style>
+		.reveal .slides {
+			width: 100% !important;
+			height:100% !important;
+			top: 0 !important;
+			margin-top: 0 !important;
+		}
+		section.special.present{
+			min-height:100% !important;
+			min-width: 100% !important;
+			top: auto !important;
+		}
+		.transparentBox{
+			background:transparent;
+			border:none;
+		}
+		.transparentBox :focus{
+			background:transparent;
+			border:none;
+		}
+		.transparentBox :active{
+			background:transparent;
+			border:none;
+		}
+	</style>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h2>Javascript Data Binding</h2>
+					<p>
+						<small>Created by: Jeffrey Huang</small>
+					</p>
+				</section>
+
+				<section>
+					<h2>What is Data-Binding?</h2>
+					<img src="files/databind1.png" style="border:none; width:650px; height:95px; box-shadow:none" >
+		<p style="line-height:1.5">
+			connection between ui and data</br>
+			changes in the data can reflect changes in the UI</br>
+			changes in the ui can reflect changes in the data</br>
+		</p>
+				</section>
+
+
+				<section>
+					<h2>Basic Data-Binding</h2>
+					<pre><code data-trim contenteditable>
+&lt;html&gt;
+	&lt;body&gt;
+
+	&lt;p&gt;Sum of 5 + 6&lt;/p&gt;
+
+	&lt;p id="demo"&gt;&lt;/p&gt;
+
+	&lt;script&gt;
+		document.getElementById("demo").innerHTML = 5 + 6;
+	&lt;/script&gt;
+
+	&lt;/body&gt;
+&lt;/html&gt;
+					</code></pre>
+				<iframe style='height:199px; width:444px; float:left; padding-left:50px;' src='files/example1.html'></iframe>
+				</section>
+
+				<section>
+					<section>
+						<h2>Types of Data-Binding</h2>
+						<p>One Way/One Time Data Binding</p>
+							<input id='one-way'><br>
+							<button id='onewaybutton'>submit</button>
+							<p id='onewayoutput'></p><br>
+
+						<p>Two Way Data-Binding</p>
+							<input id='two-way'><p id='twowayoutput'></p>
+						<script>
+							var oneway = document.getElementById('one-way');
+							var twoway = document.getElementById('two-way');
+							var onewaybutton = document.getElementById("onewaybutton");
+							onewaybutton.addEventListener("click",function(){calculateoneway(onewaybutton)});
+							var calculateoneway = function( button ) {
+								document.getElementById('onewayoutput').innerHTML = oneway.value;
+							};
+							twoway.oninput = function(){
+								document.getElementById('twowayoutput').innerHTML = twoway.value;
+							};
+
+						</script>
+					</section>
+						<section>
+							<p>advanced databinding is hard. Easy to get into infinite loops and difficult to maintain. Luckily for us, there are javascript libraries build for this.</p>
+						</section>
+				</section>
+				<section>
+					<h2>Converter</h2>
+					<div data-ng-app="" data-ng-init="celcius=0">
+					<input style="width:2em; text-align:right; border: none; border-bottom: 1px dashed #aaa; background:transparent; font-size:inherit" ng-model="celcius">&deg;C = {{celcius*9/5+32}}&deg;F
+				</section>
+				<section>
+					<div>
+						<h2>How Data-Binding is Implemented</h2>
+						<div style="height:30px;">
+						</div>
+						<div style="width:450px; float:left; margin-left:200px;">
+						<h3>AngularJS</h3>
+					<pre><code style="height:188px;"data-trim contenteditable>
+
+$scope.C = 0;
+
+$scope.F = function(){
+    return $scope.C*9/5 + 32;
+}
+					</code></pre>
+						</div>
+						<div style="width:450px;float:right; margin-right:200px;">
+						<h3>EmberJS</h3>
+					<pre><code style="word-wrap:break-word;" data-trim contenteditable>
+
+Ember.Object.create({
+    C: 0,
+
+    F: function(){
+        return this.get('C')*9/5 
+        + 32;
+    }.property('C')
+});
+     
+					</code></pre>
+					</div>
+					</div>
+				</section>
+
+				<section>
+					<div style="margin-left:auto;margin-right:auto;width:960px;">
+					<h2>Performance Tests</h2>
+					<div style="width:450px; float:left;">
+						<h3>Dirty Checking</h3>
+						<iframe src="databindtests/jsbin.com/AGIJUmOj/1/index.html"></iframe>
+					</div>
+					<div style="width:450px; float:right;">
+						<h3>Observable Properties</h3>
+						<iframe src="databindtests/jsbin.com/IYAdIVEP/2/index.html"></iframe>
+					</div>
+					</div>
+				</section>
+				<section>
+					<img src="files/render_speed.gif">
+				</section>
+				<section style="width:100%;"class="special">
+					<h3>Is this bad? 2000 in 40ms</h3>
+					<iframe style="width:100%;height:600px;" src="files/ga-improved.html"></iframe>
+				</section>
+				<section>
+					<h2>Why is Data-Binding Useful?</h2>
+					<div style="display:block;">
+						<img style="border:none;box-shadow:none; margin-right:200px;" src='files/left_arrow.png'>
+						<img style="border:none;box-shadow:none; margin-left:200px;"src='files/right_arrow.png'>
+					</div>
+					<div style="display:block;">
+						<h4 style="margin-left:100px; float:left;">User-Interface Improvements</h4>
+						<h4 style="margin-right:100px; float:right;">Productivity Improvements</h4>
+					</div>
+				
+				</section>
+
+				<section>
+					<section>
+						<h2>User-Interface Improvements</h2>
+					</section>
+					<section style="width:100%;"class="special">
+						<h3>GA</h3>
+					<iframe style="width:100%;height:600px;" src="http://ga.olm-jhuang/node/6736/"></iframe>
+					</section>
+					<section style="width:100%;"class="special">
+						<h3>GA - Improved</h3>
+						<iframe style="width:100%;height:600px;" src="files/ga-improved.html"></iframe>
+				</section>
+				<section>
+					<section>
+						<h2>Productivity Improvements</h2>
+					</section>
+					<section>
+						<div style="width:960px; margin-right:auto; margin-left:auto;">
+							<h2>WYSIWYG Editors</h2>
+							<textarea name='editor1' id='editor1'>
+								changeme
+							</textarea>
+						</div>
+					</section>
+					<section style="width:100%;"class="special">
+						<h3>ACE Editors</h3>
+						<iframe style="width:100%;height:600px;" src="http://labsdev.res.oicr.on.ca/lab/7794/manager"></iframe>
+					</section>
+				</section>
+				<section>
+					Future of Data Binding?
+					 	- object.observe
+					 	
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="ckeditor/ckeditor.js"></script>
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				zoom:0.5,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+		<script>
+			CKEDITOR.replace('editor1');
+		</script>
+
+	</body>
+</html>
