@@ -16,7 +16,7 @@ App.DemoController = Ember.ObjectController.extend({
   execute: function() {
   	var start = window.performance.now();
     eval(this.get('script'));
-    console.log(this.set('executionTime', (window.performance.now() - start).toFixed() + "ms"));
+    this.set('executionTime', (window.performance.now() - start).toFixed() + "ms");
   }
 });
 

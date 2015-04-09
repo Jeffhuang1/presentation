@@ -34,13 +34,9 @@ ko.observable(
   this.executionTime = ko.observable("");
 
   this.execute = function() {
-    var beginning = new Date().getTime();
     var start = window.performance.now();
     eval(self.selectedScript());
     self.executionTime((window.performance.now() - start).toFixed() + "ms");
-    var end = new Date().getTime();
-var time = end - beginning;
-alert('Execution time: ' + time);
   };
 }
 var todoCtrl = new TodoCtrl();
