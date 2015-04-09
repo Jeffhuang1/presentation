@@ -1,0 +1,41 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic');
+
+body{
+	font-size: 2em;
+	font-family: Open sans;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+input, textarea{
+	font-size: inherit;
+	width: 600px;
+	padding: 1px;
+	border: 1px solid #999;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+input[type=submit]{
+
+	background: #EEE;
+}
+input[type=submit]:hover{
+	background:#ddd;
+	color: #333;
+}
+input[type=submit]:active{
+	background: #333;
+	color: #ccc;
+}
+
+label{
+	display: block;
+	width: 800px;
+	margin-left: 76px;
+	text-align: left;
+}
+
+label input{
+	float: right;
+}

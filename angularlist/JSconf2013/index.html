@@ -1,0 +1,25 @@
+<!doctype html>
+<html ng-app>
+<head>
+<link rel="stylesheet" href="../style.css">
+<script src="../../bower_components/angular/angular.min.js"></script>
+<script src="demo.js"></script>
+</head>
+<body>
+<div ng-app>
+  <div ng-controller="DemoCtrl">
+    Text: {{ text }}<br />
+    <input style="background-color:#ECEEE6" type="text" ng-model="text" >
+    <div style="height:30px"></div>
+    <form ng-submit="execute()">
+      <textarea style="height: 7em; background-color:#ECEEE6" ng-model="script">
+      </textarea><br>
+      <input class="btn-primary" type="submit" value="execute">
+    </form>
+    <div>
+      <span ng-repeat="item in list">{{ item }} </span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

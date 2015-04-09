@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div>
+  <div>
+    <span data-bind="click: toggle">Text:</span> <!-- ko text:text --><!-- /ko --><br />
+    <input style="background-color:#ECEEE6" type="text" data-bind="value:text, valueUpdate:'afterkeydown'">
+    <div style="height:30px;"></div>
+    <form data-bind="submit:execute">
+      <textarea style="height: 7em; background-color:#ECEEE6" data-bind="value:selectedScript">
+      </textarea><br>
+      <input class="btn-primary" type="submit" value="execute">
+    </form>
+  </div>
+  <div data-bind="foreach: list">
+    <span data-bind="text: $data"></span>
+  </div>
+</div>
+<script src="../../bower_components/knockout.js/knockout-2.3.0.debug.js"></script>
+<script src="demo.js"></script>
+</body>
+</html>

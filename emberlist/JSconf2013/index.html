@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+<script type="text/x-handlebars" data-template-name="demo">
+<div>
+  <div>
+    Text: {{text}}<br />
+    {{view Ember.TextField style="background-color:#ECEEE6" valueBinding="text" }}
+    <div style="height:30px"></div>
+    <form data-bind="submit:execute">
+      {{view Ember.TextArea valueBinding="script" style="height:7em; background-color:#ECEEE6"}}<br>
+      <input class="btn-primary" type="submit" value="execute" {{action 'execute'}}>
+    </form>
+  </div>
+  <div>
+  {{#each item in list}}
+      <span>{{item}}</span>
+  {{/each}}
+  </div>
+</div>
+</script>
+<script src="../../bower_components/jquery/jquery.js"></script>
+<script src="../../bower_components/handlebars/handlebars.js"></script>
+<script src="../../bower_components/ember/ember.js"></script>
+<script src="demo.js"></script>
+</body>
+</html>
