@@ -136,7 +136,7 @@
 	&lt;input<br>
 	<div style="margin-left:100px;">
 			bind="message"<br>
-			value="<span id='hichange1'>{{value}}</span>"&nbsp;/&gt;
+			value="<span id='hichange1'></span>"&nbsp;/&gt;
 	</div>
 
 </div>
@@ -147,45 +147,46 @@
 <div style="text-align:left;">
 	var email = {<br>
 	<div style="margin-left:100px;">
-			message: "<span id='hichange2'>{{value}}</span>"<br>
+			message: "<span id='hichange2'></span>"<br>
 	</div>
 	};
-	<div class='fragment'>
+	<div id='auto-change-appear-javascript' class='fragment'>
 			email.message="foo";
 	</div>
 </div>
 					</div>
 					</div>
 					<script>
-						window.addEventListener('keydown',function(){changetofoo()});
-						var changetofoo = function(){
+						var inputtextbox = document.getElementById("two-way-input");
+						inputtextbox.oninput = function(){
+							document.getElementById("hichange1").innerHTML = inputtextbox.value;
+							document.getElementById("hichange2").innerHTML = inputtextbox.value;
+						};
+						var changetofoo1 = function(){
 							var inputtwoway = document.getElementById("two-way-input");
-							var x = event.which || event.keyCode;
-							if(x == 220){
 								document.getElementById("hichange1").innerHTML = "foo";
 								document.getElementById("hichange2").innerHTML = "foo";
 								inputtwoway.value = 'foo';
 
-							}
-							else if(x == 221){
-								document.getElementById("backbone-output").innerHTML = "foo";
-								backbone.value = 'foo';
-							}
-							else if(x == 219){
-								document.getElementById("ember-output").innerHTML = "foo";
-								ember.value = 'foo';
-							}
-							else if(x == 187){
-								document.getElementById("angular-output").innerHTML = "foo";
-								angular.value = 'foo';
-							}
+						};
+						var changetofoo2 = function(){
+							document.getElementById("knockout-output").innerHTML = "foo";
+							knockout.value = 'foo';
+						};
+						var changetofoo3 = function(){
+							document.getElementById("ember-output").innerHTML = "foo";
+							ember.value = 'foo';
+						};
+						var changetofoo4 = function(){
+							document.getElementById("angular-output").innerHTML = "foo";
+							angular.value = 'foo';
 						};
 					</script>
 				</section>
 
 				<section>
 					<div>
-						<h2>BackBoneJS</h2>
+						<h2>KnockoutJS</h2>
 						<div style="height:30px;">
 						</div>
 						<div class='fragment' data-fragment-index='1' style="width:auto; margin-left:50px;float:left;">
@@ -206,7 +207,7 @@
 <h3 class='fragment' data-fragment-index='1'>JavaScript</h3>
 <div class='fragment' data-fragment-index='1' style="text-align:left;margin-right:50px;">
 	<pre><code>var message = ko.observable();</code></pre>
-	<div style="width:500px;" class='fragment' data-fragment-index='2'><pre><code>message("Hello, JSConf");</code></pre></div>
+	<div id='auto-change-appear-knockout' style="width:500px;" class='fragment' data-fragment-index='2'><pre><code>message("foo");</code></pre></div>
 	<div class='fragment' data-fragment-index='3'><pre><code>message()</code></pre></div>
 </div>
 </div>
@@ -215,12 +216,12 @@
 </div>
 
 					<h3 class='fragment' data-fragment-index='1'>Preview</h3>
-					<input id='backbone-bind' class='fragment' data-fragment-index='1' id="two-way-input2" style="margin-left:auto; margin-right:auto">
-					<div id='backbone-output'></div>
+					<input id='knockout-bind' class='fragment' data-fragment-index='1' id="two-way-input2" style="margin-left:auto; margin-right:auto">
+					<div id='knockout-output'></div>
 					<script>
-								var backbone = document.getElementById('backbone-bind');
-								backbone.oninput = function(){
-								document.getElementById('backbone-output').innerHTML = backbone.value;
+								var knockout = document.getElementById('knockout-bind');
+								knockout.oninput = function(){
+								document.getElementById('knockout-output').innerHTML = knockout.value;
 							};
 					</script>
 				</section>
@@ -251,7 +252,7 @@
 	<pre><code>var email = Ember.Object.create({
    		message: ""
 	});</code></pre>
-	<div style="width:500px;" class='fragment' data-fragment-index='2'><pre><code>email.set('message', "Foo");</code></pre></div>
+	<div id='auto-change-appear-ember' style="width:500px;" class='fragment' data-fragment-index='2'><pre><code>email.set('message', "Foo");</code></pre></div>
 	<div class='fragment' data-fragment-index='3'><pre><code>email.get('message');</code></pre></div>
 </div>
 </div>
@@ -295,7 +296,7 @@
 <h3 class='fragment' data-fragment-index='1'>JavaScript</h3>
 <div class='fragment' data-fragment-index='1' style="text-align:left;margin-right:50px;">
 	<pre><code style="width:500px;" >$scope.message;</code></pre>
-	<div class='fragment' data-fragment-index='2'>
+	<div id='auto-change-appear-angular' class='fragment' data-fragment-index='2'>
 	<pre><code style="width:500px;" >$scope.message = "foo"; 
 $scope.$apply();</code></pre></div>
 </div>
@@ -317,6 +318,23 @@ $scope.$apply();</code></pre></div>
 
 
 
+
+				<section>
+				Javascript Library Testing
+				</section>
+
+				<section style="width:100%;"class="special">
+					<h3>AngularJS</h3>
+					<iframe style="width:100%;height:600px;" src="http://angularlist.local/"></iframe>
+				</section>
+				<section style="width:100%;"class="special">
+					<h3>EmberJS</h3>
+					<iframe style="width:100%;height:600px;" src="http://emberlist.local/"></iframe>
+				</section>
+				<section>
+					<h3>KnockoutJS</h3>
+					<iframe style="width:100%;height:600px;" src="http://knockoutlist.local"></iframe>
+				</section>
 				<section data-ng-app="">
 					<h2>Converter</h2>
 					<div data-ng-init="celcius=0">
@@ -379,7 +397,7 @@ Ember.Object.create({
 					</section>
 					<section>
 						<div style="width:450px; margin-left:auto; margin-right:auto">
-						<h3>BackBoneJS</h3>
+						<h3>KnockoutJS</h3>
 					<pre><code style="word-wrap:break-word;" data-trim contenteditable>
 
 var C = ko.observable(0);
@@ -393,7 +411,7 @@ var F = ko.computed(function(){
 					</section>
 				<section>
 						<div style="width:450px; margin-left:auto; margin-right:700px;">
-						<h3>BackBoneJS</h3>
+						<h3>KnockoutJSJS</h3>
 					<pre><code style="word-wrap:break-word; width:750px;;" data-trim contenteditable>
 
 var A = ko.observable(true);
@@ -518,6 +536,22 @@ var if_A_then_B_else_C = ko.computed(function(){
 		<script>
 			CKEDITOR.replace('editor1');
 		</script>
-
+		<script>
+		function addClassNameListener(elemId, callback) {
+		    var elem = document.getElementById(elemId);
+		    var lastClassName = elem.className;
+		    window.setInterval( function() {   
+		       var className = elem.className;
+		        if (className !== lastClassName) {
+		            callback();   
+		            lastClassName = className;
+        		}
+   		},10);
+		}
+		addClassNameListener("auto-change-appear-javascript", function(){ changetofoo1(); });
+		addClassNameListener("auto-change-appear-knockout", function(){ changetofoo2(); });
+		addClassNameListener("auto-change-appear-ember", function(){ changetofoo3(); });
+		addClassNameListener("auto-change-appear-angular", function(){ changetofoo4(); })
+		</script>
 	</body>
 </html>
