@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Data-Binding Jeffrey Huang</title>
 		<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -67,7 +67,7 @@
 
 				<section>
 					<h2>What is Data-Binding?</h2>
-					<img src="files/databind1.png" style="border:none; width:650px; height:95px; box-shadow:none" >
+					<img src="files/databindarrows.png" style="border:none; width:650px; height:115px; box-shadow:none" >
 		<p style="line-height:1.5">
 			connection between ui and data</br>
 			changes in the data can reflect changes in the UI</br>
@@ -215,7 +215,7 @@
 <div style="height:250px;">
 </div>
 
-					<h3 class='fragment' data-fragment-index='1'>Preview</h3>
+					<h3 class='fragment' data-fragment-index='1'>Results</h3>
 					<input id='knockout-bind' class='fragment' data-fragment-index='1' id="two-way-input2" style="margin-left:auto; margin-right:auto">
 					<div id='knockout-output'></div>
 					<script>
@@ -260,7 +260,7 @@
 <div style="height:300px;">
 </div>
 
-					<h3 class='fragment' data-fragment-index='1'>Preview</h3>
+					<h3 class='fragment' data-fragment-index='1'>Results</h3>
 					<input id='ember-bind' class='fragment' data-fragment-index='1' id="two-way-input2" style="margin-left:auto; margin-right:auto">
 					<div id='ember-output'></div>
 					<script>
@@ -274,6 +274,7 @@
 
 
 				<section>
+					<section>
 					<div>
 						<h2>AngularJS</h2>
 						<div style="height:30px;">
@@ -305,7 +306,7 @@ $scope.$apply();</code></pre></div>
 <div style="height:300px;">
 </div>
 
-					<h3 class='fragment' data-fragment-index='1'>Preview</h3>
+					<h3 class='fragment' data-fragment-index='1'>Results</h3>
 					<input id='angular-bind' class='fragment' data-fragment-index='1' id="two-way-input2" style="margin-left:auto; margin-right:auto">
 					<div id='angular-output'></div>
 					<script>
@@ -315,12 +316,21 @@ $scope.$apply();</code></pre></div>
 							};
 					</script>
 				</section>
+				<section>
+					<h2>Angular Uses Dirty Checking</h2>
+					<pre  style="width:750px; margin-left:auto; margin-right:auto;"><code>
+	foreach property in the $scope object.
+		Did the value change?
+		if changed, then update value.
+					</code></pre>
+				</section>
+				</section>
 
 
 
 
 				<section>
-				Javascript Library Testing
+				<h2>Speed Benchmarks</h2>
 				</section>
 
 				<section style="width:100%;"class="special">
@@ -332,20 +342,33 @@ $scope.$apply();</code></pre></div>
 					<iframe style="width:100%;height:600px;" src="http://emberlist.local/"></iframe>
 				</section>
 				<section>
+					<section>
 					<h3>KnockoutJS</h3>
 					<iframe style="width:100%;height:600px;" src="http://knockoutlist.local"></iframe>
+					</section>
+					<section>
+					<h3>KnockoutJS uses Synchronous Rendering</h3>
+					</section>
+					<section>
+						<h2>Synchronous Rendering</h2>
+						<img src="files/synchronous.png">
+					</section>
+					<section>
+						<h2>Asynchronous Rendering</h2>
+						<img src="files/asynchronous.png">
+					</section>
+				</section>
+				<section>
+				<h3>EmberJS and KnockoutJS use Observable Properties</h3>
+				</section>
+				<section>
+					<img style="float:left; margin-left:50px" src="files/data-bind-list-update-rate.gif">
+					<div class='fragment' data-fragment-index='1'>16.7ms = 60FPS</div>
+					<div class='fragment' data-fragment-index='2'>33.4ms = 30FPS</div>
 				</section>
 				<section>
 					<img src="files/render_speed.gif">
 				</section>
-				<section>
-					<img src="files/data-bind-list-update-rate.gif">
-				</section>
-				<section style="width:100%;"class="special">
-					<h3>Is this bad? 2000 in 40ms</h3>
-					<iframe style="width:100%;height:600px;" src="files/ga-improved.html"></iframe>
-				</section>
-
 				<section data-ng-app="">
 					<h2>Converter</h2>
 					<div data-ng-init="celcius=0">
@@ -405,6 +428,7 @@ Ember.Object.create({
 });
      
 					</code></pre></div>
+<div class='fragment'>What Happens if A is true and C changes?</div>
 					</section>
 					<section>
 						<div style="width:450px; margin-left:auto; margin-right:auto">
@@ -422,7 +446,7 @@ var F = ko.computed(function(){
 					</section>
 				<section>
 						<div style="width:450px; margin-left:auto; margin-right:700px;">
-						<h3>KnockoutJSJS</h3>
+						<h3>KnockoutJS</h3>
 					<pre><code style="word-wrap:break-word; width:750px;;" data-trim contenteditable>
 
 var A = ko.observable(true);
@@ -438,11 +462,57 @@ var if_A_then_B_else_C = ko.computed(function(){
     }
 
 });
-     
 					</code></pre>
 					</div>
+					<div class='fragment'>Dependencies are recalculated each time the function is run</div>
 					</section>
 
+				</section>
+				<section>
+				<h2>Which Library is Best?</h2>
+				</section>
+				<section>
+					<h2>Summary</h2>
+					<table>
+						<thead>
+							<tr>
+								<th>Library</th>
+								<th>Observable Properties</th>
+								<th>Asynchronous Rendering</th>
+								<th>Computed Dependencies</th>
+								<th>Dynamic Dependencies</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>AngularJS</td>
+								<td>&#10006</td>
+								<td>&#10004</td>
+								<td>&#10006</td>
+								<td>&#10006</td>
+							<tr>
+							<tr>
+								<td>EmberJS</td>
+								<td>&#10004</td>
+								<td>&#10004</td>
+								<td>&#10004</td>
+								<td>&#10006</td>
+							<tr>
+							<tr>
+								<td>KnockoutJS</td>
+								<td>&#10004</td>
+								<td>&#10006</td>
+								<td>&#10004</td>
+								<td>&#10004</td>
+							<tr>
+						</tbody>
+					</table>
+					<div class='fragment' style="text-align:left; margin-left:50px; margin-top:25px;">
+						<ul>
+							<li>Angular is better suited for smaller projects with simple data models.</li>
+							<li>Ember and Knockout is better suited for larger projects with more complex data models</li>
+						</ul>
+					</div>
 				</section>
 				<!-- <section>
 					<h2>Why is Data-Binding Useful?</h2>
