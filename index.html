@@ -74,28 +74,6 @@
 			changes in the ui can reflect changes in the data</br>
 		</p>
 				</section>
-
-
-				<section>
-					<h2>Basic Data-Binding</h2>
-					<pre><code data-trim contenteditable>
-&lt;html&gt;
-	&lt;body&gt;
-
-	&lt;p&gt;Sum of 5 + 6&lt;/p&gt;
-
-	&lt;p id="demo"&gt;&lt;/p&gt;
-
-	&lt;script&gt;
-		document.getElementById("demo").innerHTML = 5 + 6;
-	&lt;/script&gt;
-
-	&lt;/body&gt;
-&lt;/html&gt;
-					</code></pre>
-				<iframe style='height:199px; width:444px; float:left; padding-left:50px;' src='files/example1.html'></iframe>
-				</section>
-
 				<section>
 					<section>
 						<h2>Types of Data-Binding</h2>
@@ -120,9 +98,6 @@
 
 						</script>
 					</section>
-						<section>
-							<p>advanced databinding is hard. Easy to get into infinite loops and difficult to maintain. Luckily for us, there are javascript libraries build for this.</p>
-						</section>
 				</section>
 
 				<section>
@@ -207,8 +182,8 @@
 <h3 class='fragment' data-fragment-index='1'>JavaScript</h3>
 <div class='fragment' data-fragment-index='1' style="text-align:left;margin-right:50px;">
 	<pre><code>var message = ko.observable();</code></pre>
-	<div id='auto-change-appear-knockout' style="width:500px;" class='fragment' data-fragment-index='2'><pre><code>message("foo");</code></pre></div>
-	<div class='fragment' data-fragment-index='3'><pre><code>message()</code></pre></div>
+	<div class='fragment' data-fragment-index='2'><pre><code>message()</code></pre></div>
+	<div id='auto-change-appear-knockout' style="width:500px;" class='fragment' data-fragment-index='3'><pre><code>message("foo");</code></pre></div>
 </div>
 </div>
 
@@ -248,12 +223,12 @@
 
 <div style="float:right;">
 <h3 class='fragment' data-fragment-index='1'>JavaScript</h3>
-<div class='fragment' data-fragment-index='1' style="text-align:left;margin-right:50px;">
-	<pre><code>var email = Ember.Object.create({
+<div class='fragment' data-fragment-index='1' style="text-align:left;margin-right:50px; width:550px;">
+	<pre><code>var emberObject = Ember.Object.create({
    		message: ""
 	});</code></pre>
-	<div id='auto-change-appear-ember' style="width:500px;" class='fragment' data-fragment-index='2'><pre><code>email.set('message', "Foo");</code></pre></div>
-	<div class='fragment' data-fragment-index='3'><pre><code>email.get('message');</code></pre></div>
+	<div class='fragment' data-fragment-index='2'><pre><code>emberObject.get('message');</code></pre></div>
+	<div id='auto-change-appear-ember' style="width:500px;" class='fragment' data-fragment-index='3'><pre><code>emberObject.set('message', "foo");</code></pre></div>
 </div>
 </div>
 
@@ -274,7 +249,6 @@
 
 
 				<section>
-					<section>
 					<div>
 						<h2>AngularJS</h2>
 						<div style="height:30px;">
@@ -295,9 +269,9 @@
 
 <div style="float:right; margin-right:50px";>
 <h3 class='fragment' data-fragment-index='1'>JavaScript</h3>
-<div class='fragment' data-fragment-index='1' style="text-align:left;margin-right:50px;">
+<div class='fragment' data-fragment-index='2' style="text-align:left;margin-right:50px;">
 	<pre><code style="width:500px;" >$scope.message;</code></pre>
-	<div id='auto-change-appear-angular' class='fragment' data-fragment-index='2'>
+	<div id='auto-change-appear-angular' class='fragment' data-fragment-index='3'>
 	<pre><code style="width:500px;" >$scope.message = "foo"; 
 $scope.$apply();</code></pre></div>
 </div>
@@ -315,22 +289,6 @@ $scope.$apply();</code></pre></div>
 								document.getElementById('angular-output').innerHTML = angular.value;
 							};
 					</script>
-				</section>
-				<section>
-					<h2>Angular Uses Dirty Checking</h2>
-					<pre  style="width:750px; margin-left:auto; margin-right:auto;"><code>
-	foreach property in the $scope object.
-		Did the value change?
-		if changed, then update value.
-					</code></pre>
-				</section>
-				</section>
-
-
-
-
-				<section>
-				<h2>Speed Benchmarks</h2>
 				</section>
 
 				<section style="width:100%;"class="special">
@@ -359,7 +317,19 @@ $scope.$apply();</code></pre></div>
 					</section>
 				</section>
 				<section>
+				<section>
 				<h3>EmberJS and KnockoutJS use Observable Properties</h3>
+				</section>
+				<section>
+				<section>
+					<h2>Angular Uses Dirty Checking</h2>
+					<pre  style="width:750px; margin-left:auto; margin-right:auto;"><code>
+	foreach property in the $scope object.
+		Did the value change?
+		if changed, then update value.
+					</code></pre>
+				</section>
+				</section>
 				</section>
 				<section>
 					<img style="float:left; margin-left:50px" src="files/data-bind-list-update-rate.gif">
@@ -486,24 +456,24 @@ var if_A_then_B_else_C = ko.computed(function(){
 						<tbody>
 							<tr>
 								<td>AngularJS</td>
-								<td>&#10006</td>
-								<td>&#10004</td>
-								<td>&#10006</td>
-								<td>&#10006</td>
+								<td class='fragment' data-fragment-index='1'>&#10006</td>
+								<td class='fragment' data-fragment-index='2'>&#10004</td>
+								<td class='fragment' data-fragment-index='3'>&#10006</td>
+								<td class='fragment' data-fragment-index='4'>&#10006</td>
 							<tr>
 							<tr>
 								<td>EmberJS</td>
-								<td>&#10004</td>
-								<td>&#10004</td>
-								<td>&#10004</td>
-								<td>&#10006</td>
+								<td class='fragment' data-fragment-index='1'>&#10004</td>
+								<td class='fragment' data-fragment-index='2'>&#10004</td>
+								<td class='fragment' data-fragment-index='3'>&#10004</td>
+								<td class='fragment' data-fragment-index='4'>&#10006</td>
 							<tr>
 							<tr>
 								<td>KnockoutJS</td>
-								<td>&#10004</td>
-								<td>&#10006</td>
-								<td>&#10004</td>
-								<td>&#10004</td>
+								<td class='fragment' data-fragment-index='1'>&#10004</td>
+								<td class='fragment' data-fragment-index='2'>&#10006</td>
+								<td class='fragment' data-fragment-index='3'>&#10004</td>
+								<td class='fragment' data-fragment-index='4'>&#10004</td>
 							<tr>
 						</tbody>
 					</table>
@@ -513,6 +483,9 @@ var if_A_then_B_else_C = ko.computed(function(){
 							<li>Ember and Knockout is better suited for larger projects with more complex data models</li>
 						</ul>
 					</div>
+				</section>
+				<section>
+				<h2>Thank You</h2>
 				</section>
 				<!-- <section>
 					<h2>Why is Data-Binding Useful?</h2>
