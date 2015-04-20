@@ -60,9 +60,13 @@
 
 				<section>
 					<h2>Javascript Data Binding</h2>
+					<br><br>
+					<div style="float:right; margin-right:275px; text-align:right;">
 					<p>
-						<small>Created by: Jeffrey Huang</small>
+						<h5>Created by: Jeffrey Huang</h5><br>
+						<h5>April 20th, 2015</h5>
 					</p>
+					</div>
 				</section>
 
 				<section>
@@ -292,8 +296,20 @@ $scope.$apply();</code></pre></div>
 				</section>
 
 				<section style="width:100%;"class="special">
+				<section>
 					<h3>AngularJS</h3>
 					<iframe style="width:100%;height:600px;" src="http://angularlist.local/"></iframe>
+				</section>
+				<section>
+				<section>
+					<h2>Angular Uses Dirty Checking</h2>
+					<pre  style="width:750px; margin-left:auto; margin-right:auto;"><code>
+	foreach property in the $scope object.
+		Did the value change?
+		if changed, then update value.
+					</code></pre>
+				</section>
+				</section>
 				</section>
 				<section style="width:100%;"class="special">
 					<h3>EmberJS</h3>
@@ -317,19 +333,7 @@ $scope.$apply();</code></pre></div>
 					</section>
 				</section>
 				<section>
-				<section>
 				<h3>EmberJS and KnockoutJS use Observable Properties</h3>
-				</section>
-				<section>
-				<section>
-					<h2>Angular Uses Dirty Checking</h2>
-					<pre  style="width:750px; margin-left:auto; margin-right:auto;"><code>
-	foreach property in the $scope object.
-		Did the value change?
-		if changed, then update value.
-					</code></pre>
-				</section>
-				</section>
 				</section>
 				<section>
 					<img style="float:left; margin-left:50px" src="files/data-bind-list-update-rate.gif">
@@ -362,6 +366,7 @@ $scope.F = function(){
 }
 					</code></pre>
 						</div>
+<div class='fragment'>AngularJS Does not have computed dependencies</div>
 					</section>
 					<section>
 						<div style="width:450px; margin-left:auto; margin-right:auto">
@@ -434,12 +439,10 @@ var if_A_then_B_else_C = ko.computed(function(){
 });
 					</code></pre>
 					</div>
-					<div class='fragment'>Dependencies are recalculated each time the function is run</div>
+					<div class='fragment' data-fragment-index='1'>Dependencies are recalculated each time the function is run</div>
+					<div class='fragment' data-fragment-index='2'>KnockoutJS has dynamic Dependencies</div>
 					</section>
 
-				</section>
-				<section>
-				<h2>Which Library is Best?</h2>
 				</section>
 				<section>
 					<h2>Summary</h2>
@@ -485,7 +488,33 @@ var if_A_then_B_else_C = ko.computed(function(){
 					</div>
 				</section>
 				<section>
-				<h2>Thank You</h2>
+				<h3 style="">Acknowledgements</h3>
+				<div style="height:75px;"></div>
+				<div style="float:left; margin-left:200px; text-align:left;">
+				<h4 style="margin-bottom:0px; font-weight:bold">Supervisor</h4>
+				<ul style="padding-bottom:20px;">
+				<li>Joseph Yamada</li>
+				</ul>
+				<h4  style="margin-bottom:0px;font-weight:bold">Co-op students</h4>
+				<ul style="padding-bottom:20px;">
+				<li>Jacob Chan</li>
+				<li>Chris Zhang</li>
+				</ul>
+				<h4 style="margin-bottom:0px;font-weight:bold">Additional help</h4>
+				<ul style="padding-bottom:20px;">
+				<li>Michelle Brazas	</li>
+				</ul>
+				</div>
+				<div style="float:right; margin-right:200px; text-align:left;">
+				<h4 style="margin-bottom:0px;font-weight:bold">Webdev team</h4>
+				<ul style="padding-bottom:20px;">
+				<li>Kim Cullion</li>
+				<li>Miyuki Fukuma</li>
+				<li>Daniel Gross</li>
+				<li>George Shewchuk
+				<li>Kaman Wu</li>
+				</ul>
+				</div>
 				</section>
 				<!-- <section>
 					<h2>Why is Data-Binding Useful?</h2>
