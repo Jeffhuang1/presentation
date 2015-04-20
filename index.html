@@ -57,7 +57,9 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-
+				<section>
+				<img src="files/wordle.png">
+				</section>
 				<section>
 					<h2>Javascript Data Binding</h2>
 					<br><br>
@@ -160,6 +162,15 @@
 							document.getElementById("angular-output").innerHTML = "foo";
 							angular.value = 'foo';
 						};
+						var getfoo1 = function(){
+							document.getElementById("auto-change-appear-knockout-3").innerHTML = document.getElementById("knockout-bind").value;
+						};
+						var getfoo2 = function(){
+							document.getElementById("auto-change-appear-ember-3").innerHTML = document.getElementById("ember-bind").value;
+						};
+						var getfoo3 = function(){
+							document.getElementById("auto-change-appear-angular-3").innerHTML = document.getElementById("angular-bind").value;
+						};
 					</script>
 				</section>
 
@@ -186,12 +197,14 @@
 <h3 class='fragment' data-fragment-index='1'>JavaScript</h3>
 <div class='fragment' data-fragment-index='1' style="text-align:left;margin-right:50px;">
 	<pre><code>var message = ko.observable();</code></pre>
-	<div class='fragment' data-fragment-index='2'><pre><code>message()</code></pre></div>
-	<div id='auto-change-appear-knockout' style="width:500px;" class='fragment' data-fragment-index='3'><pre><code>message("foo");</code></pre></div>
+	<div id='auto-change-appear-knockout-2' class='fragment' data-fragment-index='2'><pre><code>message()</code></pre></div>
+	<div id='auto-change-appear-knockout-3'></div>
+	<div class='fragment' data-fragment-index='3'></div>
+	<div id='auto-change-appear-knockout' style="width:500px;" class='fragment' data-fragment-index='4'><pre><code>message("foo");</code></pre></div>
 </div>
 </div>
 
-<div style="height:250px;">
+<div style="height:375px;">
 </div>
 
 					<h3 class='fragment' data-fragment-index='1'>Results</h3>
@@ -231,12 +244,14 @@
 	<pre><code>var emberObject = Ember.Object.create({
    		message: ""
 	});</code></pre>
-	<div class='fragment' data-fragment-index='2'><pre><code>emberObject.get('message');</code></pre></div>
-	<div id='auto-change-appear-ember' style="width:500px;" class='fragment' data-fragment-index='3'><pre><code>emberObject.set('message', "foo");</code></pre></div>
+	<div id='auto-change-appear-ember-2' class='fragment' data-fragment-index='2'><pre><code>emberObject.get('message');</code></pre></div>
+	<div id='auto-change-appear-ember-3'></div>
+	<div class='fragment' data-fragment-index='3'></div>
+	<div id='auto-change-appear-ember' style="width:500px;" class='fragment' data-fragment-index='4'><pre><code>emberObject.set('message', "foo");</code></pre></div>
 </div>
 </div>
 
-<div style="height:300px;">
+<div style="height:375px;">
 </div>
 
 					<h3 class='fragment' data-fragment-index='1'>Results</h3>
@@ -273,15 +288,17 @@
 
 <div style="float:right; margin-right:50px";>
 <h3 class='fragment' data-fragment-index='1'>JavaScript</h3>
-<div class='fragment' data-fragment-index='2' style="text-align:left;margin-right:50px;">
+<div id='auto-change-appear-angular-2' class='fragment' data-fragment-index='2' style="text-align:left;margin-right:50px;">
 	<pre><code style="width:500px;" >$scope.message;</code></pre>
-	<div id='auto-change-appear-angular' class='fragment' data-fragment-index='3'>
+	<div id='auto-change-appear-angular-3'></div>
+	<div class='fragment' data-fragment-index='3'></div>
+	<div id='auto-change-appear-angular' class='fragment' data-fragment-index='4'>
 	<pre><code style="width:500px;" >$scope.message = "foo"; 
 $scope.$apply();</code></pre></div>
 </div>
 </div>
 
-<div style="height:300px;">
+<div style="height:375px;">
 </div>
 
 					<h3 class='fragment' data-fragment-index='1'>Results</h3>
@@ -328,8 +345,12 @@ $scope.$apply();</code></pre></div>
 						<img src="files/synchronous.png">
 					</section>
 					<section>
+						<a href="#/14">
+						<div>
 						<h2>Asynchronous Rendering</h2>
 						<img src="files/asynchronous.png">
+					</div>
+					</a>
 					</section>
 				</section>
 				<section>
@@ -610,7 +631,10 @@ var if_A_then_B_else_C = ko.computed(function(){
 		addClassNameListener("auto-change-appear-javascript", function(){ changetofoo1(); });
 		addClassNameListener("auto-change-appear-knockout", function(){ changetofoo2(); });
 		addClassNameListener("auto-change-appear-ember", function(){ changetofoo3(); });
-		addClassNameListener("auto-change-appear-angular", function(){ changetofoo4(); })
+		addClassNameListener("auto-change-appear-angular", function(){ changetofoo4(); });
+		addClassNameListener("auto-change-appear-knockout-2", function(){ getfoo1(); });
+		addClassNameListener("auto-change-appear-ember-2", function(){ getfoo2(); });
+		addClassNameListener("auto-change-appear-angular-2", function(){ getfoo3(); });
 		</script>
 	</body>
 </html>
